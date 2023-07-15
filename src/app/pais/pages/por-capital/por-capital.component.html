@@ -1,0 +1,24 @@
+<h2>Por Capital</h2>
+<hr>
+<div class="row">
+    <div class="col">
+<!-- 
+        Para escuchar cuando ocurre un evento se utiliza parentesis, 
+        de ahi se puede llamar una funcion para enviar un valor a una 
+        variable del componente:
+        [] = si se envia una variable y nada para enviar un string sencillo
+--> 
+       <app-pais-input
+        (onEnter)="buscar( $event )" 
+        (onDebounce)="sugerencias( $event )"
+        placeholderPais="Buscar Capital..."
+       ></app-pais-input>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col">    
+        <app-pais-table [paises]="paises" [termino]="termino"></app-pais-table>
+    </div>
+</div>

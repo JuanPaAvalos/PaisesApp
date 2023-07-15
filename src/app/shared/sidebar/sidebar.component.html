@@ -1,0 +1,24 @@
+<h2>Busquedas</h2>
+<br>
+<ul class="list-group">
+    <li *ngFor="let link of routerLinks"
+        class="list-group-item" 
+        [routerLink]="link.path" 
+        routerLinkActive="active" 
+        [routerLinkActiveOptions]="{exact: false}"
+        >
+    {{link.name}}</li>
+    <!-- <li class="list-group-item" 
+        routerLink="" 
+        routerLinkActive="active" 
+        [routerLinkActiveOptions]="{exact: true}">
+    Buscar pais</li>
+    <li class="list-group-item" 
+        routerLink="capital" 
+        routerLinkActive="active">
+    Buscar por Capital</li>
+    <li class="list-group-item" 
+        routerLink="region" 
+        routerLinkActive="active">
+    Buscar por Region </li> -->
+</ul>
