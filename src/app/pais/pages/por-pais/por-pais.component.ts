@@ -17,8 +17,8 @@ export class PorPaisComponent implements OnInit {
   constructor(private countryService: PaisService) {}
 
   ngOnInit(): void {
-    this.countries = this.countryService.cacheStore.byCountry.countries
-    this.initialTerm = this.countryService.cacheStore.byCountry.term
+    this.countries = this.countryService.cacheStore.byCountry.countries;
+    this.initialTerm = this.countryService.cacheStore.byCountry.term;
   }
 
   search(term: string) {

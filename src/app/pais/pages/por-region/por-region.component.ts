@@ -7,7 +7,7 @@ import { PaisService } from '../../services/pais.service';
   templateUrl: './por-region.component.html',
   styleUrls: ['./por-region.component.css'],
 })
-export class PorRegionComponent implements OnInit{
+export class PorRegionComponent implements OnInit {
   regions: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
   activeRegion: string = '';
   errorExist: boolean = false;
@@ -16,20 +16,21 @@ export class PorRegionComponent implements OnInit{
 
   constructor(private countryService: PaisService) {}
 
-
   ngOnInit(): void {
-    this.countries = this.countryService.cacheStore.byRegion.countries
-    this.activeRegion = this.countryService.cacheStore.byRegion.term
+    this.countries = this.countryService.cacheStore.byRegion.countries;
+    this.activeRegion = this.countryService.cacheStore.byRegion.term;
   }
 
   searchByRegion(region: string) {
     this.isLoading = true;
     this.activeRegion = region;
     this.errorExist = false;
-    this.countryService.searchRegion(this.activeRegion).subscribe((countries) => {
-      this.isLoading = false;
-      this.countries = countries;
-    });
+    this.countryService
+      .searchRegion(this.activeRegion)
+      .subscribe((countries) => {
+        this.isLoading = false;
+        this.countries = countries;
+      });
 
     // this.paisService.buscarCapital( this.termino )
     // .subscribe( paisesResponse => {

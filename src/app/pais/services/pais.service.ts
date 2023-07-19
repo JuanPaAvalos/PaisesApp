@@ -18,7 +18,6 @@ export class PaisService {
 
   constructor(private http: HttpClient) {
     this.getFromLocalStorage();
-    console.log('after call getToLocalStorage();');
   }
 
   private getCountriesRequest(url: string) {
@@ -30,16 +29,12 @@ export class PaisService {
 
   private setToLocalStorage() {
     localStorage.setItem('countriesCache', JSON.stringify(this.cacheStore));
-    console.log('on setToLocalStorage();', JSON.stringify(this.cacheStore));
   }
 
   private getFromLocalStorage() {
     //siempre para obtener del local storage llamar esta funcion en el consteructor
-    console.log('IN getFromLocalStorage();');
-
     if (!localStorage.getItem('countriesCache')) return;
     this.cacheStore = JSON.parse(localStorage.getItem('countriesCache')!);
-    console.log('after getFromLocalStorage();', this.cacheStore);
   }
 
   searchCountry(term: string) {

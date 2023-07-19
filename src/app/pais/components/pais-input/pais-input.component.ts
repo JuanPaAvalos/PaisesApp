@@ -26,16 +26,17 @@ export class PaisInputComponent implements OnInit {
       el pipe de { debounceTime } from 'rxjs'; permite saber cuando ya no se escribre por x milisegundos
       suscribe el "valor" a cualquier cambio de 'debouncer' y emite el evento onDebounce
     */
-    this.debouncerSubscription = this.debouncer.pipe(debounceTime(200)).subscribe((value) => {
-      console.log('debouncer', value);
-      this.onDebounce.emit(value)
-    });
+    this.debouncerSubscription = this.debouncer
+      .pipe(debounceTime(200))
+      .subscribe((value) => {
+        this.onDebounce.emit(value);
+      });
 
     this.term = this.initialValue;
   }
 
   ngOnDestroy(): void {
-    this.debouncerSubscription?.unsubscribe()
+    this.debouncerSubscription?.unsubscribe();
   }
 
   buscar() {
