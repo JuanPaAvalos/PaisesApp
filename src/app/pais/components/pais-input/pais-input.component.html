@@ -10,6 +10,6 @@
     class="form-control"
     [placeholder]="searchPlaceholder"
     [(ngModel)]="term"
-    (keypress)="onKeyPress( txtInput.value )"
+    (keyup)="onKeyPress( txtInput.value )"
     #txtInput
     >
