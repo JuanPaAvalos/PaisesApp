@@ -17,7 +17,7 @@ export class PorPaisComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  buscar(term: string) {
+  search(term: string) {
     this.term = term;
     this.errorExist = false;
     this.isLoading = true;
@@ -27,7 +27,7 @@ export class PorPaisComponent implements OnInit {
     });
   }
 
-  sugerencias(term: string) {
+  sugestions(term: string) {
     this.errorExist = false;
   }
 }
