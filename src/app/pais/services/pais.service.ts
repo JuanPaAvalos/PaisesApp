@@ -16,7 +16,10 @@ export class PaisService {
     byRegion: { term: '', countries: [] },
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getFromLocalStorage();
+    console.log('after call getToLocalStorage();');
+  }
 
   private getCountriesRequest(url: string) {
     return this.http.get<Country[]>(url).pipe(
@@ -25,13 +28,28 @@ export class PaisService {
     );
   }
 
+  private setToLocalStorage() {
+    localStorage.setItem('countriesCache', JSON.stringify(this.cacheStore));
+    console.log('on setToLocalStorage();', JSON.stringify(this.cacheStore));
+  }
+
+  private getFromLocalStorage() {
+    //siempre para obtener del local storage llamar esta funcion en el consteructor
+    console.log('IN getFromLocalStorage();');
+
+    if (!localStorage.getItem('countriesCache')) return;
+    this.cacheStore = JSON.parse(localStorage.getItem('countriesCache')!);
+    console.log('after getFromLocalStorage();', this.cacheStore);
+  }
+
   searchCountry(term: string) {
     const url = `${this.apiUrl}/name/${term}`;
     return this.getCountriesRequest(url).pipe(
       tap(
         (countries) =>
           (this.cacheStore.byCountry = { term: term, countries: countries })
-      )
+      ),
+      tap(() => this.setToLocalStorage())
     );
   }
 
@@ -41,7 +59,8 @@ export class PaisService {
       tap(
         (countries) =>
           (this.cacheStore.byCapital = { term: term, countries: countries })
-      )
+      ),
+      tap(() => this.setToLocalStorage())
     );
   }
 
@@ -51,13 +70,13 @@ export class PaisService {
       tap(
         (countries) =>
           (this.cacheStore.byRegion = { term: term, countries: countries })
-      )
+      ),
+      tap(() => this.setToLocalStorage())
     );
   }
 
   viewCountry(countryCode: string): Observable<Country | null> {
     const url = `${this.apiUrl}/alpha/${countryCode}`;
-
     return this.http.get<Country[]>(url).pipe(
       map((countries) => (countries.length > 0 ? countries[0] : null)),
       catchError((error) => of(null))
