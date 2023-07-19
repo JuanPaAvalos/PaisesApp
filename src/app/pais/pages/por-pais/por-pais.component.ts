@@ -9,19 +9,23 @@ import { PaisService } from '../../services/pais.service';
 })
 export class PorPaisComponent implements OnInit {
   term: string = '';
+  initialTerm: string = '';
   errorExist: boolean = false;
   countries: Country[] = [];
   isLoading: boolean = false;
 
-  constructor(private paisService: PaisService) {}
+  constructor(private countryService: PaisService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.countries = this.countryService.cacheStore.byCountry.countries
+    this.initialTerm = this.countryService.cacheStore.byCountry.term
+  }
 
   search(term: string) {
     this.term = term;
     this.errorExist = false;
     this.isLoading = true;
-    this.paisService.searchCountry(this.term).subscribe((countries) => {
+    this.countryService.searchCountry(this.term).subscribe((countries) => {
       this.isLoading = false;
       this.countries = countries;
     });

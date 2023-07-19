@@ -11,17 +11,21 @@ export class PorCapitalComponent implements OnInit {
   term: string = '';
   errorExist: boolean = false;
   countries: Country[] = [];
+  initialTerm: string = ''
   isLoading: boolean = false;
 
-  constructor(private paisService: PaisService) {}
+  constructor(private countryService: PaisService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.countries = this.countryService.cacheStore.byCapital.countries
+    this.initialTerm = this.countryService.cacheStore.byCapital.term
+  }
   // Se ejecuta cuando recibe este evento desde el input (onEnter)="buscar( $event )"
   search(termino: string) {
     this.term = termino;
     this.errorExist = false;
     this.isLoading = true;
-    this.paisService.searchCapital(this.term).subscribe((countries) => {
+    this.countryService.searchCapital(this.term).subscribe((countries) => {
       this.isLoading = false;
       this.countries = countries;
     });

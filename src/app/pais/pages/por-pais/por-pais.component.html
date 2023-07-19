@@ -6,6 +6,7 @@
        <app-pais-input
         (onEnter)="search( $event )"
         (onDebounce)="search( $event )"
+        [initialValue]="initialTerm"
         [searchPlaceholder]="'Buscar Por Pais...'"
        ></app-pais-input>
     </div>

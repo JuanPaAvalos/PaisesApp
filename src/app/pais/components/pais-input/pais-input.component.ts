@@ -12,6 +12,7 @@ export class PaisInputComponent implements OnInit {
   @Output() onEnter: EventEmitter<string> = new EventEmitter();
   @Output() onDebounce: EventEmitter<string> = new EventEmitter();
   @Input() searchPlaceholder: string = '';
+  @Input() initialValue: string = '';
 
   term: string = '';
 
@@ -25,14 +26,15 @@ export class PaisInputComponent implements OnInit {
       el pipe de { debounceTime } from 'rxjs'; permite saber cuando ya no se escribre por x milisegundos
       suscribe el "valor" a cualquier cambio de 'debouncer' y emite el evento onDebounce
     */
-    this.debouncerSubscription = this.debouncer.pipe(debounceTime(900)).subscribe((value) => {
+    this.debouncerSubscription = this.debouncer.pipe(debounceTime(200)).subscribe((value) => {
       console.log('debouncer', value);
       this.onDebounce.emit(value)
     });
+
+    this.term = this.initialValue;
   }
 
   ngOnDestroy(): void {
-    console.log("destruido input  ");
     this.debouncerSubscription?.unsubscribe()
   }
 
@@ -41,6 +43,6 @@ export class PaisInputComponent implements OnInit {
   }
 
   onKeyPress(searchTerm: string) {
-    this.debouncer.next(this.term);
+    this.debouncer.next(searchTerm);
   }
 }
