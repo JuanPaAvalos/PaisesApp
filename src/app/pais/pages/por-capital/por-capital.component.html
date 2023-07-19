@@ -2,23 +2,23 @@
 <hr>
 <div class="row">
     <div class="col">
-<!-- 
-        Para escuchar cuando ocurre un evento se utiliza parentesis, 
-        de ahi se puede llamar una funcion para enviar un valor a una 
+<!--
+        Para escuchar cuando ocurre un evento se utiliza parentesis,
+        de ahi se puede llamar una funcion para enviar un valor a una
         variable del componente:
         [] = si se envia una variable y nada para enviar un string sencillo
---> 
+-->
        <app-pais-input
-        (onEnter)="buscar( $event )" 
+        (onEnter)="buscar( $event )"
         (onDebounce)="sugerencias( $event )"
-        placeholderPais="Buscar Capital..."
+        [placeholderBusqueda]="'Buscar Por Capital...'"
        ></app-pais-input>
     </div>
 </div>
 <hr>
-
+g
 <div class="row">
-    <div class="col">    
+    <div class="col">
         <app-pais-table [paises]="paises" [termino]="termino"></app-pais-table>
     </div>
 </div>
