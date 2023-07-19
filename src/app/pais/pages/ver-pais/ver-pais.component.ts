@@ -11,7 +11,7 @@ import { Country } from '../../interfaces/pais.interface';
 })
 export class VerPaisComponent implements OnInit {
 
-  pais!: Country;
+  public country!: Country;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,11 +29,11 @@ export class VerPaisComponent implements OnInit {
         */
         switchMap(({ id }) => this.paisService.viewCountry(id))
       )
-      .subscribe((paises) => {
-        if (paises?.length == 0) return this.router.navigateByUrl('');
+      .subscribe((country) => {
+        if (country == null) return this.router.navigateByUrl('');
 
-        console.log( paises![0]);
-        return this.pais = paises![0];
+        console.log( country);
+        return this.country = country;
 
       })
       // .subscribe((params: Params) => { //? Se puede llamar utilizando parametros

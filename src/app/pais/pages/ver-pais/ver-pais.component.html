@@ -4,21 +4,21 @@
     </div>
 </ng-template>
 
-<div *ngIf="pais; else loading">
+<div *ngIf="country; else loading">
     <div class="row">
         <div class="col-4">
             <h3>Bandera</h3>
-            <img [src]=pais.flags.png style="width: 180px;">
+            <img [src]=country.flags.png style="width: 180px;">
         </div>
 
         <div class="col">
             <h3>Información:</h3>
             <ul class="list-group">
                 <li class="list-group-item">
-                    <strong>Nombre</strong> {{pais.name.common}}
+                    <strong>Nombre</strong> {{country.name.common}}
                 </li>
                 <li class="list-group-item">
-                    <strong>Poblacion</strong> {{pais.population | number}}
+                    <strong>Poblacion</strong> {{country.population | number}}
                 </li>
             </ul>
         </div>
@@ -28,10 +28,10 @@
         <div class="col">
             <h3>Traducciones:</h3>
             <div class="d-flex flex-wrap">
-                <span class="bg-primary badge badge-secondary m-1">{{pais.translations['ara'].common}}</span>
-                <span class="bg-primary badge badge-secondary m-1">{{pais.translations['jpn'].common}}</span>
-                <span class="bg-primary badge badge-secondary m-1">{{pais.translations['ita'].common}}</span>
-                <span class="bg-primary badge badge-secondary m-1">{{pais.translations['swe'].common}}</span>
+                <span class="bg-primary badge badge-secondary m-1">{{country.translations['ara'].common}}</span>
+                <span class="bg-primary badge badge-secondary m-1">{{country.translations['jpn'].common}}</span>
+                <span class="bg-primary badge badge-secondary m-1">{{country.translations['ita'].common}}</span>
+                <span class="bg-primary badge badge-secondary m-1">{{country.translations['swe'].common}}</span>
             </div>
         </div>
     </div>

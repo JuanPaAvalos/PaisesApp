@@ -6,7 +6,6 @@ import { Country } from '../interfaces/pais.interface';
 @Injectable({
   providedIn: 'root',
 })
-
 export class PaisService {
   private apiUrl: string = 'https://restcountries.com/v3.1/';
 
@@ -27,16 +26,13 @@ export class PaisService {
     return this.http.get<Country[]>(url).pipe(catchError((error) => of([])));
   }
 
-  viewCountry(countryCode: string): Observable<Country[] | null> {
+  viewCountry(countryCode: string): Observable<Country | null> {
     const url = `${this.apiUrl}/alpha/${countryCode}`;
-    return (
-      this.http
-        .get<Country[]>(url)
-        // .pipe(
-        //   map( paises => paises.length > 0 ? paises[0] : null),
-        //   catchError(error => of([]))
-        // );
-        .pipe(catchError((error) => of([])))
+
+    return this.http.get<Country[]>(url)
+    .pipe(
+      map(countries => countries.length > 0 ? countries[0] : null),
+      catchError((error) => of(null))
     );
   }
 }
