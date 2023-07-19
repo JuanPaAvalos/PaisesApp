@@ -6,7 +6,7 @@
        <app-pais-input
         (onEnter)="buscar( $event )"
         (onDebounce)="sugerencias( $event )"
-        [placeholderBusqueda]="'Buscar Por Pais...'"
+        [searchPlaceholder]="'Buscar Por Pais...'"
        ></app-pais-input>
     </div>
 </div>
@@ -15,6 +15,6 @@
 
 <div class="row">
     <div class="col">
-        <app-pais-table [paises]="paises" [termino]="termino"></app-pais-table>
+        <app-pais-table [paises]="countries" [termino]="term"></app-pais-table>
     </div>
 </div>

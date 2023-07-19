@@ -5,36 +5,28 @@ import { PaisService } from '../../services/pais.service';
 @Component({
   selector: 'app-por-pais',
   templateUrl: './por-pais.component.html',
-  styleUrls: ['./por-pais.component.css']
+  styleUrls: ['./por-pais.component.css'],
 })
 export class PorPaisComponent implements OnInit {
-
-  termino: string = "";
+  term: string = '';
   errorExist: boolean = false;
-  paises: Country[] = [];
+  countries: Country[] = [];
 
-  constructor( private paisService: PaisService) { }
+  constructor(private paisService: PaisService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  buscar(termino : string) {
-    this.termino = termino;
+  buscar(term: string) {
+    this.term = term;
 
     this.errorExist = false;
 
-    this.paisService.buscarPais( this.termino )
-      .subscribe( paisesResponse => {
-        this.paises = paisesResponse;
-
-      }, (err) => {
-        this.errorExist = true;
-        console.info(err);
-        this.paises = [];
-      })
+    this.paisService.searchCountry(this.term).subscribe((countries) => {
+      this.countries = countries;
+    });
   }
 
-  sugerencias(termino: string) {
+  sugerencias(term: string) {
     this.errorExist = false;
   }
 }

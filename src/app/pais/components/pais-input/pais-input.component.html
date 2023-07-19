@@ -1,15 +1,15 @@
 <form action="" autocomplete="off" (ngSubmit)="buscar()">
-<!-- 
+<!--
     el placeholder recibe el valor que le mande el padre desde un @Input
     el ng model escucha y recibe cualquier cambio en la varibale termino
     Cuando hay un evento input, se ejecuta "teclaPresionada( $event )""
---> 
-    <input 
-    type="text" 
+-->
+    <input
+    type="text"
     name="Termino"
-    class="form-control" 
-    [placeholder]="placeholderBusqueda"
-    [(ngModel)]="termino"
-    (input)="teclaPresionada( $event )"
+    class="form-control"
+    [placeholder]="searchPlaceholder"
+    [(ngModel)]="term"
+    (input)="keyPress( $event )"
     >
 </form>

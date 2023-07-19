@@ -1,6 +1,6 @@
 
 <div  *ngIf="paises.length == 0 && termino != ''" class="alert alert-warning text-center">
-    No se encontro el termino buscado: {{ termino }}
+    No se encontro el termino buscado: <strong>{{ termino }}</strong>
 </div>
 
 <table class="table table-hover" *ngIf="paises.length > 0">

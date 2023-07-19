@@ -9,16 +9,15 @@
         [] = si se envia una variable y nada para enviar un string sencillo
 -->
        <app-pais-input
-        (onEnter)="buscar( $event )"
-        (onDebounce)="sugerencias( $event )"
-        [placeholderBusqueda]="'Buscar Por Capital...'"
+        (onEnter)="search( $event )"
+        (onDebounce)="sugestions( $event )"
+        [searchPlaceholder]="'Buscar Por Capital...'"
        ></app-pais-input>
     </div>
 </div>
 <hr>
-g
 <div class="row">
     <div class="col">
-        <app-pais-table [paises]="paises" [termino]="termino"></app-pais-table>
+        <app-pais-table [paises]="countries" [termino]="term"></app-pais-table>
     </div>
 </div>

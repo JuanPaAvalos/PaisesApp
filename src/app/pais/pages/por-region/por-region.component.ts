@@ -9,7 +9,7 @@ import { PaisService } from '../../services/pais.service';
 })
 export class PorRegionComponent  {
 
- 
+
   regiones: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania', ];
   regionActiva: string = '';
   errorExist: boolean = false;
@@ -21,17 +21,17 @@ export class PorRegionComponent  {
     this.regionActiva = region;
     this.errorExist = false;
 
-    this.paisService.buscarRegion(this.regionActiva)
+    this.paisService.searchRegion(this.regionActiva)
     .subscribe(paisesResponse => {
       this.paises = paisesResponse;
     }, (err) => {
-      this.errorExist = true;  
+      this.errorExist = true;
     }
     )
 
     // this.paisService.buscarCapital( this.termino )
     // .subscribe( paisesResponse => {
-    //   this.paises = paisesResponse; 
+    //   this.paises = paisesResponse;
     // }, (err) => {
     //   this.errorExist = true;
     //   this.paises = [];
