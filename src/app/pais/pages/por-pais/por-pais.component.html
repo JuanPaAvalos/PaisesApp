@@ -6,7 +6,7 @@
        <app-pais-input
         (onEnter)="buscar( $event )"
         (onDebounce)="sugerencias( $event )"
-        placeholderPais="Buscar Pais..."
+        [placeholderBusqueda]="'Buscar Por Pais...'"
        ></app-pais-input>
     </div>
 </div>
