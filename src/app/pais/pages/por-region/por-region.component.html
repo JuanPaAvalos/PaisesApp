@@ -6,7 +6,7 @@
 <h5>Seleccione Region</h5>
 
 <div class="row">
-  <div class="col">
+  <div class="col text-center">
     <!-- [ngClass]="{
             'btn-outline-primary': regionActiva !== region,
             'btn-primary': regionActiva == region
@@ -29,8 +29,8 @@
 <hr />
 
 <div class="row">
+  <app-loader-spiner *ngIf="isLoading"></app-loader-spiner>
   <div class="col" *ngIf="countries.length > 0">
-    <app-loader-spiner *ngIf="isLoading"></app-loader-spiner>
     <app-pais-table *ngIf="!isLoading"
       [paises]="countries"
       [termino]="activeRegion"

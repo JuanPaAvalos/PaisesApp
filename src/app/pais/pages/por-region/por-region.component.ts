@@ -17,9 +17,9 @@ export class PorRegionComponent {
   constructor(private paisService: PaisService) {}
 
   searchByRegion(region: string) {
+    this.isLoading = true;
     this.activeRegion = region;
     this.errorExist = false;
-    this.isLoading = true;
     this.paisService.searchRegion(this.activeRegion).subscribe((countries) => {
       this.isLoading = false;
       this.countries = countries;
