@@ -11,6 +11,7 @@ export class PorCapitalComponent implements OnInit {
   term: string = '';
   errorExist: boolean = false;
   countries: Country[] = [];
+  isLoading: boolean = false;
 
   constructor(private paisService: PaisService) {}
 
@@ -19,19 +20,10 @@ export class PorCapitalComponent implements OnInit {
   search(termino: string) {
     this.term = termino;
     this.errorExist = false;
-
-    // this.paisService.buscarCapital(this.term).subscribe(
-    //   (paisesResponse) => {
-    //     this.countries = paisesResponse;
-    //   },
-    //   (err) => {
-    //     this.errorExist = true;
-    //     this.countries = [];
-    //   }
-    // );
-
+    this.isLoading = true;
     this.paisService.searchCapital(this.term).subscribe((countries) => {
-      this.countries = countries
+      this.isLoading = false;
+      this.countries = countries;
     });
   }
 

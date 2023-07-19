@@ -1,31 +1,39 @@
-<h2>Buscar Por Region <small>{{activeRegion | titlecase }}</small> </h2>
-<hr>
+<h2>
+  Buscar Por Region <small>{{ activeRegion | titlecase }}</small>
+</h2>
+<hr />
 
 <h5>Seleccione Region</h5>
 
 <div class="row">
-    <div class="col">
-        <!-- [ngClass]="{
+  <div class="col">
+    <!-- [ngClass]="{
             'btn-outline-primary': regionActiva !== region,
             'btn-primary': regionActiva == region
         }" -->
-        <!-- [class]="(regionActiva == region) ? 'btn btn-primary': 'btn-outline-primary'" -->
-        <button *ngFor="let region of regions"
-                [class]="getBtnClass( region ) + ' mx-2 '"
-                (click)="searchByRegion( region )">
-                {{region}}
-        </button>
-        <!-- <app-pais-input
+    <!-- [class]="(regionActiva == region) ? 'btn btn-primary': 'btn-outline-primary'" -->
+    <button
+      *ngFor="let region of regions"
+      [class]="getBtnClass(region) + ' mx-2 '"
+      (click)="searchByRegion(region)"
+    >
+      {{ region }}
+    </button>
+    <!-- <app-pais-input
         (onEnter)="buscar( $event )"
         (onDebounce)="sugerencias( $event )"
         placeholderPais="Buscar Por Region..."
        ></app-pais-input> -->
-    </div>
+  </div>
 </div>
-<hr>
+<hr />
 
 <div class="row">
-    <div class="col" *ngIf="countries.length > 0">
-        <app-pais-table [paises]="countries" [termino]="activeRegion"></app-pais-table>
-    </div>
+  <div class="col" *ngIf="countries.length > 0">
+    <app-loader-spiner *ngIf="isLoading"></app-loader-spiner>
+    <app-pais-table *ngIf="!isLoading"
+      [paises]="countries"
+      [termino]="activeRegion"
+    ></app-pais-table>
+  </div>
 </div>

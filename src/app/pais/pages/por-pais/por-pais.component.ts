@@ -11,6 +11,7 @@ export class PorPaisComponent implements OnInit {
   term: string = '';
   errorExist: boolean = false;
   countries: Country[] = [];
+  isLoading: boolean = false;
 
   constructor(private paisService: PaisService) {}
 
@@ -18,10 +19,10 @@ export class PorPaisComponent implements OnInit {
 
   buscar(term: string) {
     this.term = term;
-
     this.errorExist = false;
-
+    this.isLoading = true;
     this.paisService.searchCountry(this.term).subscribe((countries) => {
+      this.isLoading = false;
       this.countries = countries;
     });
   }

@@ -9,6 +9,7 @@ import { VerPaisComponent } from './pages/ver-pais/ver-pais.component';
 import { PaisTableComponent } from './components/pais-table/pais-table.component';
 import { PaisInputComponent } from './components/pais-input/pais-input.component';
 import { PaisRoutingModule } from './pais-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -32,6 +33,7 @@ import { PaisRoutingModule } from './pais-routing.module';
     CommonModule,
     FormsModule,
     PaisRoutingModule,
+    SharedModule
   ]
 })
 export class countriesModule { }

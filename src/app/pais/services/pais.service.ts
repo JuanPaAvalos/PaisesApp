@@ -20,7 +20,7 @@ export class PaisService {
 
   searchCountry(term: string) {
     const url = `${this.apiUrl}/name/${term}`;
-    return this.http.get<Country[]>(url).pipe(catchError((error) => of([])));
+    return this.getCountriesRequest(url);
   }
 
   searchCapital(term: string): Observable<Country[]> {

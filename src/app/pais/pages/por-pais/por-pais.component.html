@@ -15,6 +15,7 @@
 
 <div class="row">
     <div class="col">
-        <app-pais-table [paises]="countries" [termino]="term"></app-pais-table>
+        <app-loader-spiner *ngIf="isLoading"></app-loader-spiner>
+        <app-pais-table *ngIf="!isLoading" [paises]="countries" [termino]="term"></app-pais-table>
     </div>
 </div>

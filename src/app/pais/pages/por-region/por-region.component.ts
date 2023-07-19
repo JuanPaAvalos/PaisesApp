@@ -5,29 +5,25 @@ import { PaisService } from '../../services/pais.service';
 @Component({
   selector: 'app-por-region',
   templateUrl: './por-region.component.html',
-  styleUrls: ['./por-region.component.css']
+  styleUrls: ['./por-region.component.css'],
 })
-export class PorRegionComponent  {
-
-
-  regions: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania', ];
+export class PorRegionComponent {
+  regions: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
   activeRegion: string = '';
   errorExist: boolean = false;
   countries: Country[] = [];
+  isLoading: boolean = false;
 
-  constructor( private paisService: PaisService) { }
+  constructor(private paisService: PaisService) {}
 
-  searchByRegion(region : string){
+  searchByRegion(region: string) {
     this.activeRegion = region;
     this.errorExist = false;
-
-    this.paisService.searchRegion(this.activeRegion)
-    .subscribe(countries => {
+    this.isLoading = true;
+    this.paisService.searchRegion(this.activeRegion).subscribe((countries) => {
+      this.isLoading = false;
       this.countries = countries;
-    }, (err) => {
-      this.errorExist = true;
-    }
-    )
+    });
 
     // this.paisService.buscarCapital( this.termino )
     // .subscribe( paisesResponse => {
@@ -36,11 +32,11 @@ export class PorRegionComponent  {
     //   this.errorExist = true;
     //   this.paises = [];
     // })
-
   }
 
-  getBtnClass( region : string ){
-    return (this.activeRegion === region) ? 'btn btn-primary': 'btn btn-outline-primary';
+  getBtnClass(region: string) {
+    return this.activeRegion === region
+      ? 'btn btn-primary'
+      : 'btn btn-outline-primary';
   }
-
 }
