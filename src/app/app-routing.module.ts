@@ -21,16 +21,16 @@ const routes: Routes = [
     // {
     //     path: 'capital',
     //     component: PorCapitalComponent,
-        
+
     // },
     // {
     //     path: 'pais/:id',
     //     component: VerPaisComponent,
-        
+
     // },
     {
         path: '**',
-        redirectTo: '',  
+        redirectTo: 'buscar',
     }
 ]
 
