@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   public routerLinks = [
-    { path: 'buscar/capital', name: 'Buscar por Capital'},
     { path: 'buscar/paises', name: 'Buscar pais'},
+    { path: 'buscar/capital', name: 'Buscar por Capital'},
     { path: 'buscar/region', name: 'Buscar por Region'},
 ]
 

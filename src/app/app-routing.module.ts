@@ -5,11 +5,11 @@ import { HomePageComponent } from './shared/pages/home-page/home-page.component'
 
 
 const routes: Routes = [
-    {
-        path: '',
-        component: HomePageComponent,
-        pathMatch: 'full'
-    },
+    // {
+    //     path: '',
+    //     component: HomePageComponent,
+    //     pathMatch: 'full'
+    // },
     {
         path: 'buscar',
         loadChildren:() => import('./pais/pais.module').then(m => m.countriesModule)
