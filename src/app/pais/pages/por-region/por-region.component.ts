@@ -10,20 +10,20 @@ import { PaisService } from '../../services/pais.service';
 export class PorRegionComponent  {
 
 
-  regiones: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania', ];
-  regionActiva: string = '';
+  regions: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania', ];
+  activeRegion: string = '';
   errorExist: boolean = false;
-  paises: Country[] = [];
+  countries: Country[] = [];
 
   constructor( private paisService: PaisService) { }
 
-  buscarPorRegion(region : string){
-    this.regionActiva = region;
+  searchByRegion(region : string){
+    this.activeRegion = region;
     this.errorExist = false;
 
-    this.paisService.searchRegion(this.regionActiva)
-    .subscribe(paisesResponse => {
-      this.paises = paisesResponse;
+    this.paisService.searchRegion(this.activeRegion)
+    .subscribe(countries => {
+      this.countries = countries;
     }, (err) => {
       this.errorExist = true;
     }
@@ -40,7 +40,7 @@ export class PorRegionComponent  {
   }
 
   getBtnClass( region : string ){
-    return (this.regionActiva === region) ? 'btn btn-primary': 'btn btn-outline-primary';
+    return (this.activeRegion === region) ? 'btn btn-primary': 'btn btn-outline-primary';
   }
 
 }

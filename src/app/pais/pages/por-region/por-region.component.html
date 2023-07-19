@@ -1,4 +1,4 @@
-<h2>Buscar Por Region <small>{{regionActiva | titlecase }}</small> </h2>
+<h2>Buscar Por Region <small>{{activeRegion | titlecase }}</small> </h2>
 <hr>
 
 <h5>Seleccione Region</h5>
@@ -10,9 +10,9 @@
             'btn-primary': regionActiva == region
         }" -->
         <!-- [class]="(regionActiva == region) ? 'btn btn-primary': 'btn-outline-primary'" -->
-        <button *ngFor="let region of regiones" 
-                [class]="getBtnClass( region ) + ' mx-2 '" 
-                (click)="buscarPorRegion( region )">
+        <button *ngFor="let region of regions"
+                [class]="getBtnClass( region ) + ' mx-2 '"
+                (click)="searchByRegion( region )">
                 {{region}}
         </button>
         <!-- <app-pais-input
@@ -25,7 +25,7 @@
 <hr>
 
 <div class="row">
-    <div class="col" *ngIf="paises.length > 0">
-        <app-pais-table [paises]="paises" [termino]="regionActiva"></app-pais-table>
+    <div class="col" *ngIf="countries.length > 0">
+        <app-pais-table [paises]="countries" [termino]="activeRegion"></app-pais-table>
     </div>
 </div>
